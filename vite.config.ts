@@ -28,5 +28,14 @@ export default defineConfig({
   server: {
     port: 5173,
     open: true,
+    hmr: {
+      overlay: false,
+    },
+  },
+  optimizeDeps: {
+    exclude: ['@emailjs/browser'],
+  },
+  define: {
+    'process.env.NODE_ENV': JSON.stringify('production'),
   },
 });
