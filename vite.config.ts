@@ -2,34 +2,28 @@ import { defineConfig } from 'vite';
 import react from '@vitejs/plugin-react';
 import path from 'path';
 
-// https://vitejs.dev/config/
-export default defineConfig(({ command, mode }) => {
-  const isProduction = mode === 'production';
-  
-  return {
-    base: isProduction ? '/' : '/',
-    plugins: [react()],
-    resolve: {
-      alias: {
-        '@': path.resolve(__dirname, './src'),
+export default defineConfig({
+  base: '/',
+  plugins: [react()],
+  resolve: {
+    alias: {
+      '@': path.resolve(__dirname, './src'),
+    },
+  },
+  build: {
+    outDir: 'dist',
+    sourcemap: true,
+    emptyOutDir: true,
+    rollupOptions: {
+      output: {
+        assetFileNames: 'assets/[name]-[hash][extname]',
+        chunkFileNames: 'assets/[name]-[hash].js',
+        entryFileNames: 'assets/[name]-[hash].js',
       },
     },
-    build: {
-      outDir: 'dist',
-      sourcemap: true,
-      chunkSizeWarningLimit: 1000,
-      rollupOptions: {
-        output: {
-          manualChunks: {
-            react: ['react', 'react-dom', 'react-router-dom'],
-            vendor: ['framer-motion'],
-          },
-        },
-      },
-    },
-    server: {
-      port: 5173,
-      open: true,
-    },
-  };
+  },
+  server: {
+    port: 5173,
+    open: true,
+  },
 });
