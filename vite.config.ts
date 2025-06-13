@@ -8,7 +8,7 @@ import postcssImport from 'postcss-import';
 
 // https://vitejs.dev/config/
 export default defineConfig({
-  base: process.env.NODE_ENV === 'production' ? '/' : '/',
+  base: './',
   plugins: [react()],
   resolve: {
     alias: {
@@ -31,7 +31,17 @@ export default defineConfig({
   },
   build: {
     outDir: 'dist',
+    assetsDir: 'assets',
     emptyOutDir: true,
+    sourcemap: true,
     cssMinify: true,
+    rollupOptions: {
+      output: {
+        manualChunks: {
+          react: ['react', 'react-dom', 'react-router-dom'],
+          vendor: ['framer-motion'],
+        },
+      },
+    },
   },
 });
