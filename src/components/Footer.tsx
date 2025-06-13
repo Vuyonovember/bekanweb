@@ -1,6 +1,7 @@
 import { FC } from 'react';
 import { Link } from 'react-router-dom';
 import { FaMapMarkerAlt, FaEnvelope } from 'react-icons/fa';
+import logo from '../assets/images/bekan.png';
 
 const Footer: FC = () => {
   const currentYear = new Date().getFullYear();
@@ -48,7 +49,7 @@ const Footer: FC = () => {
             <Link to="/" className="inline-block mb-6">
               <div className="flex items-center space-x-3">
                 <img 
-                  src="/logo/bekan.png" 
+                  src={logo}
                   alt="BeKan Logo" 
                   className="h-9 w-auto"
                   onError={(e) => {

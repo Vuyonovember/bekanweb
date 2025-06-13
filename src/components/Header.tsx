@@ -2,6 +2,7 @@ import { FC } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import { motion, AnimatePresence } from 'framer-motion';
 import { FiMenu, FiX } from 'react-icons/fi';
+import logo from '../assets/images/bekan.png';
 
 interface HeaderProps {
   isScrolled: boolean;
@@ -39,7 +40,7 @@ const Header: FC<HeaderProps> = ({ isScrolled, isMenuOpen, toggleMenu, closeMenu
           >
             <div className="flex items-center">
               <img 
-                src="/logo/bekan.png" 
+                src={logo} 
                 alt="BeKan Logo"
                 className="h-8 w-auto"
               />
